@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <OutputPath>..\Plugins\COMM\$(Configuration)</OutputPath>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Title>$(AssemblyName) - DSR-Plugin</Title>
+	  <Authors>Oscar-Wohlfarhrt</Authors>
+	  <Description>Plugin of DSRemapper</Description>
+	  <Copyright>Copyright (c) 2023 Oscar Andrés Wohlfarhrt</Copyright>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageProjectUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</RepositoryUrl>
+	  <AssemblyVersion>0.2.0</AssemblyVersion>
+	  <FileVersion>$(AssemblyVersion)</FileVersion>
+	  <Version>$(AssemblyVersion)-beta</Version>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DSRemapper.Core" Version="0.2.2-beta" />
+    <PackageReference Include="FireLibs.IO" Version="0.2.1-alpha" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="COMM.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <OutputPath>..\Plugins\COMM\$(Configuration)</OutputPath>
@@ -20,11 +21,12 @@
 	  <FileVersion>$(AssemblyVersion)</FileVersion>
 	  <Version>$(AssemblyVersion)-beta</Version>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSRemapper.Core" Version="0.2.2-beta" />
-    <PackageReference Include="FireLibs.IO" Version="0.2.1-alpha" />
+    <PackageReference Include="DSRemapper.Core" Version="0.2.3-beta" />
+    <PackageReference Include="FireLibs.IO" Version="0.2.2-alpha" />
     <PackageReference Include="System.IO.Ports" Version="8.0.0" />
   </ItemGroup>
 
@@ -33,5 +35,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="..\DSRPackager -w -p $(OutputPath) -o &quot;..\ZipPlugins\$(ProjectName) v$(Version).dsrp&quot;" />
+  </Target>
 
 </Project>

@@ -25,9 +25,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSRemapper.Core" Version="0.2.6-beta" />
+    <PackageReference Include="DSRemapper.Core" Version="0.3.0-beta" />
     <PackageReference Include="FireLibs.IO" Version="0.2.2-alpha" />
-    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

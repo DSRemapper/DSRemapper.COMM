@@ -243,6 +243,8 @@ namespace DSRemapper.COMM
                         report.Gyro = new DSRVector3(rawReport.Gyroscope[0] / gyroScale,
                             rawReport.Gyroscope[1] / gyroScale, rawReport.Gyroscope[2] / gyroScale);
 
+                        //motPro.ProcessRawIMU(report.RawAccel,report.Gyro);
+
                         DSRVector3 temp = report.Gyro - lastGyro;
                         if (temp.Length < 1f)
                             gyroAvg.Update(report.Gyro, 200);
@@ -253,8 +255,11 @@ namespace DSRemapper.COMM
 
                         motPro.Update(report.RawAccel, report.Gyro);
 
-                        report.Grav = -motPro.Grav;
+                        //report.RawAccel = motPro.RawAccel;
+                        //report.Gyro = motPro.RawGyro;
+                        report.Grav = motPro.Grav;
                         report.Accel = motPro.Accel;
+
                         report.Rotation = motPro.rotation;
                         report.DeltaRotation = motPro.deltaRotation;
                         //report.DeltaTime = motPro.DeltaTime;
@@ -285,7 +290,7 @@ namespace DSRemapper.COMM
         }
 
         /// <inheritdoc/>
-        public void SendOutputReport(DefaultDSROutputReport report)
+        public void SendOutputReport(IDSROutputReport report)
         {
             for (int i = 0; i < report.Rumble.Length; i++)
                 outReport.Axes[i] = report.Rumble[i].ToShortAxis();

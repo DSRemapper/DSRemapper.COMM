@@ -7,7 +7,6 @@ using FireLibs.IO.COMPorts.Win;
 using SerialDeviceInfo = FireLibs.IO.COMPorts.SerialDeviceInfo;
 using System.Runtime.InteropServices;
 using DSRemapper.Core.Types;
-using FireLibs.Logging;
 
 namespace DSRemapper.COMM
 {
